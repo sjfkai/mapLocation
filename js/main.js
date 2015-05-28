@@ -27,7 +27,7 @@
 
 		async.eachSeries(locationArr , function(location , cb){
 			location = $.trim(location);
-			if(!location) cb();
+			if(!location) return cb();
 			var url = getUrl(location);
 			// $.get(url,function(data , status){
 			// 	 alert("Data: " + data + "\nStatus: " + status);
