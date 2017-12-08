@@ -39,7 +39,7 @@
         <h1>Map Location <small>使用百度<a target="_blank" href="http://developer.baidu.com/map/index.php?title=webapi/guide/webservice-geocoding">Geocoding API</a>批量转换地址为经纬度</small></h1>
       </div>
       <div>
-        <p class="text-danger col-md-6">在下面输入地址，每个地址占一行</p>
+        <p class="text-danger col-md-6">在下面输入地址，每个地址占一行<span class="">（如果您的数据量很大，请联系：sjfkai@163.com）</span></p>
         <a  class="col-md-offset-4 col-md-2" href="https://github.com/sjfkai/mapLocation" target="_blank">
           <span class="label label-success">fork on Github</span>
         </a>
@@ -85,5 +85,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.0.0/async.min.js" type="text/javascript"></script>
 
     <script src="js/main.js" type="text/javascript"></script>
+    <!-- 百度自动推送 -->
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+      </script>
   </body>
 </html>
