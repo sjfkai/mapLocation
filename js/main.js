@@ -3,6 +3,7 @@
 	var api =  
 
 	$(document).ready(function(){
+		var isAwardShow = false;
 		//点击转换
 		$("#start-button").click(function(){
 			var location = $("#location-text").val();
@@ -15,6 +16,12 @@
 			convertAndShow(locationArr);
 			// alert(locationArr);
 
+		});
+
+		// 赞赏码悬停
+		$('#award-button').click(function(){
+			$('.award').css('display', isAwardShow ? 'none' : 'block');
+			isAwardShow = !isAwardShow;
 		});
 	});
 

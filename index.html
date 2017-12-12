@@ -7,7 +7,7 @@
     <title>
        地址批量转换经纬度工具
     </title>
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta http-equiv="content-style-type" content="text/css" />
     <meta http-equiv="content-scripte-type" content="text/javascript" />
@@ -40,7 +40,7 @@
         <h1>Map Location <small>使用百度<a target="_blank" href="http://developer.baidu.com/map/index.php?title=webapi/guide/webservice-geocoding">Geocoding API</a>批量转换地址为经纬度</small></h1>
       </div>
       <div>
-        <p class="text-danger col-md-6">在下面输入地址，每个地址占一行<span class="">（如果您的数据量很大，请联系：sjfkai@163.com）</span></p>
+        <p class="text-danger col-md-6">在下面输入地址，每个地址占一行</p>
         <a  class="col-md-offset-4 col-md-2" href="https://github.com/sjfkai/mapLocation" target="_blank">
           <span class="label label-success">fork on Github</span>
         </a>
@@ -48,8 +48,14 @@
       <div class=" form-group">
           <textarea id="location-text" class="form-control"></textarea>
         </br>
-        <div class="col-sm-offset-11 col-sm-1">
+        <div class="col-sm-offset-10 col-sm-1">
           <button id="start-button" class="btn btn-lg btn-primary ">转换</button>
+        </div>
+        <div class="col-sm-1">
+          <button id="award-button" class="btn btn-lg btn-primary ">打赏</button>
+        </div>
+        <div class="col-sm-offset-9 col-sm-3 award">
+          <img src="./code.jpg"/>
         </div>
       </div>
       

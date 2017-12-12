@@ -1,4 +1,6 @@
 body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
 #location-text { height: 500px ; }
+.award {display: none}
+.award img {width: 100%;}
 .result {padding: 10px ,0 ;}
 .footer {margin-top: 50px;}
