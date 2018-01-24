@@ -1,0 +1,39 @@
+.content {
+  margin: 0 50px
+}
+
+.result {
+  margin-top: 10px
+}
+.result-text {
+  font-size: 20px
+}
+.table {
+  margin-top: 10px
+}
+
+.table-btn {
+  margin: 0 5px
+}
+
+.header {
+  height: 100px;
+  padding-top: 20px;
+}
+
+.header h1 {
+  display: inline;
+  font-size: 50px;
+  color: white;
+}
+
+.header h3 {
+  display: inline;
+  color: white;
+  margin-left: 20px;
+}
+
+.footer {
+  padding-top: 50px;
+  text-align: center;
+}
