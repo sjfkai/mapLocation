@@ -13,7 +13,8 @@ class LocationInput extends Component {
       getFieldDecorator: PropTypes.func,
       validateFields: PropTypes.func,
     }).isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired
   }
 
   handleSubmit = (e) => {
@@ -72,7 +73,7 @@ class LocationInput extends Component {
             <Row type="flex" justify="center"> 
               <Col span={12}>
                 <FormItem>
-                  <Button type="primary" htmlType="submit" > 转换 </Button>
+                  <Button type="primary" htmlType="submit" loading={this.props.loading}> 转换 </Button>
                 </FormItem>
               </Col>
             </Row>

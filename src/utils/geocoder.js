@@ -1,6 +1,9 @@
 import axios from 'axios'
 import jsonp from 'jsonp'
 
+const googleCache = {}
+const baiduCache = {}
+
 export async function getCode(platform, locations) {
   if(!locations || !locations.length) {
     return []
@@ -19,6 +22,9 @@ export async function getCode(platform, locations) {
 }
 
 async function getCodeFromBaidu(location){
+  if (baiduCache[location]) {
+    return baiduCache[location]
+  }
   const ak = 'gQsCAgCrWsuN99ggSIjGn5nO'
   const url = `http://api.map.baidu.com/geocoder/v2/?address=${location}&output=json&ak=${ak}`
 
@@ -36,7 +42,7 @@ async function getCodeFromBaidu(location){
     }
   }
 
-  return {
+  const result = {
     location,
     isError: false,
     code: res.result.location,
@@ -44,13 +50,18 @@ async function getCodeFromBaidu(location){
     confidence: res.result.confidence,
     level: res.result.level,
   }
+
+  baiduCache[location] = result
+  return result
 }
 
 async function getCodeFromGoogle(location){
+  if (googleCache[location]) {
+    return googleCache[location]
+  }
   const ak = 'AIzaSyC8KXjTx1zmigxX1-iMAa9xkUWIQdXIO4Y'
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${ak}`
   const res = (await axios.get(url)).data
-  console.log(res)
   if (res.status !== 'OK') {
     return {
       location,
@@ -59,12 +70,15 @@ async function getCodeFromGoogle(location){
       status: res.status,
     }
   }
-  return {
+
+  const result = {
     location,
     isError: false,
     code: res.results[0].geometry.location,
     precise: res.results[0].geometry.location_type,
   }
+  googleCache[location] = result
+  return result
 }
 
 function jsonpPromise(url, opts) {

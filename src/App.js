@@ -66,7 +66,7 @@ class App extends Component {
             <h1>Map Location</h1> <h3>批量转换地址为经纬度</h3>
           </Header>
           <Content className="content">
-            <LocationInput onSubmit={this.handleSubmit}/>
+            <LocationInput onSubmit={this.handleSubmit} loading={this.state.loading}/>
             <div className="result">
               <Row>
                 <Col className="result-text" span={6}>结果:</Col>
