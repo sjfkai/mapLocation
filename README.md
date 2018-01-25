@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/sjfkai/mapLocation.svg?branch=master)](https://travis-ci.org/sjfkai/mapLocation)
 # mapLocation
 批量转换地址为经纬度
 

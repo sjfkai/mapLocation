@@ -19,11 +19,11 @@ const content = (
   <div className="donate-content">
     <Row>
       <Col span={12}>
-        <p> <img src="/image/paypal.png"/> </p>
+        <p> <img src="/image/paypal.png" alt="paypal QRCode" /> </p>
         <p> <a href="https://www.paypal.me/sjfkai" target="_blank"  rel="noopener noreferrer">Pay for me</a> </p>
       </Col>
       <Col span={12}>
-        <img src="/image/code.jpg"/>
+        <img src="/image/code.jpg" alt="paypal QRCode" />
       </Col>
     </Row>
   </div>

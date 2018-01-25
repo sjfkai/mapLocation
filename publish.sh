@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 yarn build
 cd build
 git init
