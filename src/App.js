@@ -85,8 +85,6 @@ class App extends Component {
             <p>基于：<a href="https://developers.google.com/maps/documentation/geocoding/start?hl=zh-cn" target="_blank"  rel="noopener noreferrer">Google</a> 和 <a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank"  rel="noopener noreferrer">Baidu</a> Geocoder API
             </p>
             <p><a href="https://github.com/sjfkai/mapLocation" target="_blank"  rel="noopener noreferrer"><Icon type="github" /> Source Code </a></p>
-
-            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255259651'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255259651%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
           </Footer>
         </Layout>
         <Donate></Donate>

@@ -61,7 +61,17 @@ async function getCodeFromGoogle(location){
   }
   const ak = 'AIzaSyC8KXjTx1zmigxX1-iMAa9xkUWIQdXIO4Y'
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${ak}`
-  const res = (await axios.get(url)).data
+  let res;
+  try {
+    res = (await axios.get(url, {timeout: 5000})).data
+  } catch (error) {
+    return {
+      location,
+      isError: true,
+      message: `请求Google服务失败，请使用Baidu或使用代理。`,
+      status: '',
+    }
+  }
   if (res.status !== 'OK') {
     return {
       location,
