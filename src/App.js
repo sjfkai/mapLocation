@@ -22,11 +22,14 @@ class App extends Component {
     this.setState({
       loading: true,
     })
-    getCode(o.platform, o.locations).then((results) => {
+    getCode(o.platform, o.locations).then(({result, errorMessage}) => {
       this.setState({
-        results: [...this.state.results, ...results],
+        results: [...this.state.results, ...result],
         loading: false,
       })
+      if (errorMessage) {
+        message.error(errorMessage);
+      }
     })
   }
 

@@ -13,12 +13,15 @@ export async function getCode(platform, locations) {
     let code
     if(platform ==='google') {
       code = await getCodeFromGoogle(location)
+      if (code.isError && code.status === 'OVER_QUERY_LIMIT') {
+        return { result, errorMessage: '资金有限，请求次数超过服务每日限额'}
+      }
     } else {
       code = await getCodeFromBaidu(location)
     }
     result.push(code)
   }
-  return result
+  return {result}
 }
 
 async function getCodeFromBaidu(location){
