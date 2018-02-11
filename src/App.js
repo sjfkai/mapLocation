@@ -101,6 +101,7 @@ class App extends Component {
             <p>Developed by sjfkai@163.com</p>
             <p>基于：<a href="https://developers.google.com/maps/documentation/geocoding/start?hl=zh-cn" target="_blank"  rel="noopener noreferrer">Google</a> 和 <a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank"  rel="noopener noreferrer">Baidu</a> Geocoder API
             </p>
+            <p>Hosted by <a href="https://pages.coding.me" style={{'font-weight':'bold'}}>Coding Pages</a></p>
             <p><a href="https://github.com/sjfkai/mapLocation" target="_blank"  rel="noopener noreferrer"><Icon type="github" /> Source Code </a></p>
           </Footer>
         </Layout>
