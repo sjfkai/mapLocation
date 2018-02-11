@@ -69,7 +69,7 @@ async function getCodeFromBaidu(location){
 }
 
 async function getCodeFromGoogle(location){
-  const cacheKey = `baidu_${location}`
+  const cacheKey = `google_${location}`
   const cache = getFromStorage(cacheKey)
   if (cache) {
     return cache
