@@ -1,10 +1,19 @@
 import axios from 'axios'
 import jsonp from 'jsonp'
 
-const googleCache = {}
-const baiduCache = {}
+function getFromStorage(key) {
+  const cache = localStorage.getItem(key)
+  if (!cache) {
+    return null
+  }
+  return JSON.parse(cache)
+}
 
-export async function getCode(platform, locations) {
+function saveToStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+export async function getCode(platform, locations, onProgress) {
   if(!locations || !locations.length) {
     return []
   }
@@ -14,19 +23,21 @@ export async function getCode(platform, locations) {
     if(platform ==='google') {
       code = await getCodeFromGoogle(location)
       if (code.isError && code.status === 'OVER_QUERY_LIMIT') {
-        return { result, errorMessage: '资金有限，请求次数超过服务每日限额'}
+        throw new Error('OVER_QUERY_LIMIT')
       }
     } else {
       code = await getCodeFromBaidu(location)
     }
-    result.push(code)
+    onProgress(code)
   }
-  return {result}
+  return result
 }
 
 async function getCodeFromBaidu(location){
-  if (baiduCache[location]) {
-    return baiduCache[location]
+  const cacheKey = `baidu_${location}`
+  const cache = getFromStorage(cacheKey)
+  if (cache) {
+    return cache
   }
   const ak = 'gQsCAgCrWsuN99ggSIjGn5nO'
   const url = `http://api.map.baidu.com/geocoder/v2/?address=${location}&output=json&ak=${ak}`
@@ -53,14 +64,15 @@ async function getCodeFromBaidu(location){
     confidence: res.result.confidence,
     level: res.result.level,
   }
-
-  baiduCache[location] = result
+  saveToStorage(cacheKey, result)
   return result
 }
 
 async function getCodeFromGoogle(location){
-  if (googleCache[location]) {
-    return googleCache[location]
+  const cacheKey = `baidu_${location}`
+  const cache = getFromStorage(cacheKey)
+  if (cache) {
+    return cache
   }
   const ak = 'AIzaSyC8KXjTx1zmigxX1-iMAa9xkUWIQdXIO4Y'
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${ak}`
@@ -90,7 +102,7 @@ async function getCodeFromGoogle(location){
     code: res.results[0].geometry.location,
     precise: res.results[0].geometry.location_type,
   }
-  googleCache[location] = result
+  saveToStorage(cacheKey, result)
   return result
 }
 

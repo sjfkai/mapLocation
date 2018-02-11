@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import  { Layout, Row, Col, Button, message, Icon } from 'antd'
+import  { Layout, Row, Col, Button, message, Icon, notification } from 'antd'
 import LocationInput from './components/LocationInput'
 import ResultTable from './components/ResultTable'
 import Donate from './components/Donate'
@@ -22,14 +22,28 @@ class App extends Component {
     this.setState({
       loading: true,
     })
-    getCode(o.platform, o.locations).then(({result, errorMessage}) => {
+    getCode(o.platform, o.locations, (code) => {
       this.setState({
-        results: [...this.state.results, ...result],
+        results: [...this.state.results, code],
+      })
+    }).then((results) => {
+      this.setState({
         loading: false,
       })
-      if (errorMessage) {
-        message.error(errorMessage);
+    }).catch((error) => {
+      if (error.message === 'OVER_QUERY_LIMIT') {
+        // 求捐赠
+        notification.error({
+          duration: 0,
+          message: 'Google 服务每日限额已耗尽',
+          description: 'Google 服务每日免费额度较少，且资费较贵。作者个人无法无限度支撑，会根据捐赠情况适当开放限额。如果本站帮助了您，期待得到您的支持。不胜感激！'
+        })
+      } else {
+        message.error(error.message)
       }
+      this.setState({
+        loading: false,
+      })
     })
   }
 
