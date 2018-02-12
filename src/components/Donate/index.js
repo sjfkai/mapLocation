@@ -18,12 +18,16 @@ class Donate extends Component {
 const content = (
   <div className="donate-content">
     <Row>
-      <Col span={12}>
+      <Col span={8}>
         <p> <img src="/image/paypal.png" alt="paypal QRCode" /> </p>
         <p> <a href="https://www.paypal.me/sjfkai" target="_blank"  rel="noopener noreferrer">Pay for me</a> </p>
       </Col>
-      <Col span={12}>
-        <img src="/image/code.jpg" alt="paypal QRCode" />
+      <Col span={8}>
+        <img src="/image/code.jpg" alt="wechat QRCode" />
+      </Col>
+      <Col span={8}>
+        <p> <img src="/image/alipay.jpeg" alt="alipay QRCode" /> </p>
+        <p> 打开支付宝[扫一扫] </p>
       </Col>
     </Row>
   </div>
