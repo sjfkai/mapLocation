@@ -13,3 +13,9 @@ install:
 - yarn
 script:
 - yarn run publish
+notifications:
+  email:
+    recipients:
+      - sjfkai@163.com
+    on_success: never
+    on_failure: always
