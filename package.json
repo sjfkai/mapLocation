@@ -24,6 +24,7 @@
     "babel-plugin-import": "^1.6.3",
     "eslint": "^4.16.0",
     "eslint-plugin-react": "^7.5.1",
-    "react-app-rewired": "^1.4.0"
+    "react-app-rewired": "^1.4.0",
+    "webpack-sentry-plugin": "^1.14.1"
   }
 }
