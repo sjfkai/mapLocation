@@ -14,7 +14,7 @@ module.exports = function override(config, env) {
       apiKey: 'cb05229812dc493fbfc53c195bbfbccf3d0c04668ded40be921ee972c2d2ac4b',
       include: /.*js.*/,
       // Release version name/hash is required
-      release: process.env.GIT_SHA
+      release: `${process.env.GIT_SHA}_${Date.now()}`
     }))
   }
   return config;
