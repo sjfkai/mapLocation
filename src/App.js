@@ -63,8 +63,8 @@ class App extends Component {
       data.push(
         [
           row.location || '',
-          row.code.lng || '',
-          row.code.lat || '',
+          (row.code && row.code.lng) || '',
+          (row.code && row.code.lat) || '',
           row.precise || '',
           row.confidence || '',
           row.level || '',
