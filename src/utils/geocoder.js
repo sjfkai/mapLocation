@@ -18,7 +18,8 @@ export async function getCode(platform, locations, onProgress) {
     return []
   }
   const result = []
-  for (const location of locations) {
+  for (let i = 0; i < locations.length; i++) {
+    const location = locations[i];
     let code
     if(platform ==='google') {
       code = await getCodeFromGoogle(location)

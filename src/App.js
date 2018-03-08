@@ -59,7 +59,8 @@ class App extends Component {
       return
     }
     const data = [['地址', '经度', '纬度',	'是否精确',	'可信度',	'地址类型',	'错误']]
-    for (const row of this.state.results) {
+    for (let i = 0; i < this.state.results.length; i++) {
+      const row = this.state.results[i];
       data.push(
         [
           row.location || '',
