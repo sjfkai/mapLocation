@@ -41,7 +41,7 @@ async function getCodeFromBaidu(location){
     return cache
   }
   const ak = 'gQsCAgCrWsuN99ggSIjGn5nO'
-  const url = `http://api.map.baidu.com/geocoder/v2/?address=${location}&output=json&ak=${ak}`
+  const url = `http://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak}`
 
   const res = await jsonpPromise(url, {
     param: 'callback',
@@ -76,7 +76,7 @@ async function getCodeFromGoogle(location){
     return cache
   }
   const ak = 'AIzaSyC8KXjTx1zmigxX1-iMAa9xkUWIQdXIO4Y'
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${ak}`
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak}`
   let res;
   try {
     res = (await axios.get(url, {timeout: 5000})).data
