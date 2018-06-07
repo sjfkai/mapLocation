@@ -37,7 +37,10 @@ class LocationInput extends Component {
           <Col span={16}>
             <FormItem label= "在下面输入地址，每个地址占一行">
               {getFieldDecorator('locations', {
-                rules: [{ required: true, message: '请至少输入一个地址' }],
+                rules: [
+                  { required: true, message: '请至少输入一个地址' },
+                  { validator: (rule, value, cb) => { value.match(/^[\d|.|\-|,|\n|\s]+$/g) ? cb(true) : cb() } , message: '不支持经纬度坐标转地址'}
+                ],
                 validateTrigger: 'onChange'
               })(
                 <TextArea autosize={{minRows: 10, maxRows: 20 }} ></TextArea>
