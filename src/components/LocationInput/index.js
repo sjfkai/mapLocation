@@ -39,7 +39,7 @@ class LocationInput extends Component {
               {getFieldDecorator('locations', {
                 rules: [
                   { required: true, message: '请至少输入一个地址' },
-                  { validator: (rule, value, cb) => { value.match(/^[\d|.|\-|,|\n|\s]+$/g) ? cb(true) : cb() } , message: '不支持经纬度坐标转地址'}
+                  { validator: (rule, value, cb) => { (value && value.match(/^[\d|.|\-|,|\n|\s]+$/g)) ? cb(true) : cb() } , message: '不支持经纬度坐标转地址'}
                 ],
                 validateTrigger: 'onChange'
               })(
