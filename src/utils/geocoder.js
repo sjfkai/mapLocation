@@ -1,5 +1,6 @@
 import axios from 'axios'
 import jsonp from 'jsonp'
+import * as ak from '../ak.json';
 
 function getFromStorage(key) {
   const cache = localStorage.getItem(key)
@@ -40,8 +41,7 @@ async function getCodeFromBaidu(location){
   if (cache) {
     return cache
   }
-  const ak = 'gQsCAgCrWsuN99ggSIjGn5nO'
-  const url = `http://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak}`
+  const url = `http://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak.baidu}`
 
   const res = await jsonpPromise(url, {
     param: 'callback',
@@ -75,8 +75,7 @@ async function getCodeFromGoogle(location){
   if (cache) {
     return cache
   }
-  const ak = 'AIzaSyC8KXjTx1zmigxX1-iMAa9xkUWIQdXIO4Y'
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak}`
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
   let res;
   try {
     res = (await axios.get(url, {timeout: 5000})).data

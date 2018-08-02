@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+echo '{"baidu":"'${BAIDU_AK}'","google":"'${GOOGLE_AK}'"}' > src/ak.json
 yarn build
 cd build
 git init
