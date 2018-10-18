@@ -1,5 +1,6 @@
 import axios from 'axios'
 import jsonp from 'jsonp'
+import { sleep } from './index'
 import * as ak from '../ak.json';
 
 function getFromStorage(key) {
@@ -41,6 +42,8 @@ async function getCodeFromBaidu(location){
   if (cache) {
     return cache
   }
+  // 为了不超qps限制，手动增加间隔
+  await sleep(500)
   const url = `http://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak.baidu}`
 
   const res = await jsonpPromise(url, {
@@ -75,6 +78,8 @@ async function getCodeFromGoogle(location){
   if (cache) {
     return cache
   }
+  // 为了不超qps限制，手动增加间隔
+  await sleep(500)
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
   let res;
   try {
