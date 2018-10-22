@@ -44,7 +44,7 @@ async function getCodeFromBaidu(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
-  const url = `http://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak.baidu}`
+  const url = `https://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak.baidu}`
 
   const res = await jsonpPromise(url, {
     param: 'callback',

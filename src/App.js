@@ -99,7 +99,7 @@ class App extends Component {
             </div>
           </Content>
           <Footer className="footer">
-            <p>Based on <a href="https://developers.google.com/maps/documentation/geocoding/start?hl=zh-cn" target="_blank"  rel="noopener noreferrer" style={{'font-weight':'bold'}}>Google</a> and <a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank"  rel="noopener noreferrer" style={{'font-weight':'bold'}} >Baidu</a> Geocoder API</p>
+            <p>Based on <a href="https://developers.google.com/maps/documentation/geocoding/start?hl=zh-cn" target="_blank"  rel="noopener noreferrer" style={{'font-weight':'bold'}}>Google</a> and <a href="https://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank"  rel="noopener noreferrer" style={{'font-weight':'bold'}} >Baidu</a> Geocoder API</p>
             <p>Developed by <a href="mailto:sjfkai@163.com" target="_top" style={{'font-weight':'bold'}}>sjfkai@163.com</a></p>
             <p>Hosted by <a href="https://pages.coding.me" style={{'font-weight':'bold'}}>Coding Pages</a></p>
             <p><a style={{'font-weight':'bold'}} href="https://github.com/sjfkai/mapLocation" target="_blank"  rel="noopener noreferrer"><Icon type="github"/> Source Code </a></p>
