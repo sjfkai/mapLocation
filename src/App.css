@@ -41,3 +41,16 @@
   padding-top: 50px;
   text-align: center;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.transform {
+  display: inline-block;
+}
+
+.coords-select {
+  width: 250px;
+  margin: 0 5px;
+}

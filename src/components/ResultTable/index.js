@@ -9,9 +9,12 @@ class ResultTable extends Component {
     loading: PropTypes.bool.isRequired
   }
   render() {
-    const dataSource = this.props.results.map((row, index) => {
-      return Object.assign({}, row, {key:index})
-    })
+    const dataSource = this.props.results.map((row, index) => ({
+      ...row,
+      key: index,
+      code: row.transformedCode || row.code,
+      coords: row.transformedCoords || row.coords,
+    }))
     return (
       <Table 
         columns={columns}
@@ -41,6 +44,9 @@ const columns = [{
 },{
   title: '地址类型',
   dataIndex: 'level',
+},{
+  title: '坐标系',
+  dataIndex: 'coords',
 },{
   title: '错误',
   dataIndex: 'message',

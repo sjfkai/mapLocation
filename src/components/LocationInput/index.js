@@ -48,7 +48,7 @@ class LocationInput extends Component {
             </FormItem>
           </Col>
           <Col xs={24} md={8} >
-            <Row type="flex" justify="center" class=""> 
+            <Row type="flex" justify="center"> 
               <Col span={24}>选择平台：</Col>
               <Col span={24}>
                 <FormItem>

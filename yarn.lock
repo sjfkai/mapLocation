@@ -1661,6 +1661,10 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "http://registry.npm.taobao.org/cookie/download/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
+coordtransform@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/coordtransform/-/coordtransform-2.1.2.tgz#090349cd62b1dc05fae47b291bf9f0b7ce827f66"
+
 core-js@^1.0.0:
   version "1.2.7"
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
