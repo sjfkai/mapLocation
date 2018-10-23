@@ -16,21 +16,25 @@
   margin: 0 5px
 }
 
+.small-result-btns {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
 .header {
-  height: 100px;
   padding-top: 20px;
+  height: auto;
 }
 
 .header h1 {
   display: inline;
-  font-size: 50px;
   color: white;
+  margin-right: 20px;
 }
 
 .header h3 {
   display: inline;
   color: white;
-  margin-left: 20px;
 }
 
 .footer {

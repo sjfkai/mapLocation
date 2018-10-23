@@ -33,8 +33,8 @@ class LocationInput extends Component {
     const { getFieldDecorator } = this.props.form
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Row type="flex" align="bottom">
-          <Col span={16}>
+        <Row type="flex" align="bottom" gutter={24}>
+          <Col xs={24} md={16}>
             <FormItem label= "在下面输入地址，每个地址占一行">
               {getFieldDecorator('locations', {
                 rules: [
@@ -47,12 +47,10 @@ class LocationInput extends Component {
               )}
             </FormItem>
           </Col>
-          <Col span={8}>
-            <Row type="flex" justify="center"> 
-              <Col span={12}>选择平台：</Col>
-            </Row>
-            <Row type="flex" justify="center"> 
-              <Col span={12}>
+          <Col xs={24} md={8} >
+            <Row type="flex" justify="center" class=""> 
+              <Col span={24}>选择平台：</Col>
+              <Col span={24}>
                 <FormItem>
                   {getFieldDecorator('platform', {initialValue: 'baidu'})(
                     <RadioGroup>
@@ -72,9 +70,7 @@ class LocationInput extends Component {
                   )}
                 </FormItem>
               </Col>
-            </Row>
-            <Row type="flex" justify="center"> 
-              <Col span={12}>
+              <Col span={24}>
                 <FormItem>
                   <Button type="primary" htmlType="submit" loading={this.props.loading}> 转换 </Button>
                 </FormItem>

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MapLocation",
+  "name": "MapLocation",
   "icons": [
     {
       "src": "image/icon/icon-72x72.png",

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import  { Layout, Row, Col, Button, message, Icon, notification } from 'antd'
 import LocationInput from './components/LocationInput'
 import ResultTable from './components/ResultTable'
+import ResultList from './components/ResultList'
 import Donate from './components/Donate'
 import './App.css'
 import {getCode} from './utils/geocoder'
@@ -15,7 +16,21 @@ class App extends Component {
     this.state = {
       results: [],
       loading: false,
+      isDesktop: false,
     }
+  }
+
+  componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth >= 768 });
   }
 
   handleSubmit = (o) => {
@@ -81,22 +96,38 @@ class App extends Component {
       <div>
         <Layout>
           <Header className="header">
-            <h1>Map Location</h1> <h3>批量转换地址为经纬度</h3>
+            <Row  type="flex" align="bottom" >
+              <Col><h1>Map Location</h1></Col>
+              <Col><h3>批量转换地址为经纬度</h3></Col>
+            </Row>
           </Header>
           <Content className="content">
             <LocationInput onSubmit={this.handleSubmit} loading={this.state.loading}/>
-            <div className="result">
-              <Row>
-                <Col className="result-text" span={6}>结果:</Col>
-                <Col offset={12} span={6} style= {{ textAlign: 'right' }}>
-                  <Button className="table-btn" onClick={this.download} icon="download"> 下载 </Button>
-                  <Button className="table-btn" onClick={this.clearResult} icon="delete"> 清空 </Button>
-                </Col>
-              </Row>
-              <div className="table">
-                <ResultTable results={this.state.results} loading={this.state.loading}/>
-              </div>
-            </div>
+            {
+              this.state.isDesktop ? (
+                <div className="result">
+                  <Row type="flex" justify="space-between" >
+                    <Col className="result-text">结果:</Col>
+                    <Col>
+                      <Button className="table-btn" onClick={this.download} icon="download"> 下载 </Button>
+                      <Button className="table-btn" onClick={this.clearResult} icon="delete"> 清空 </Button>
+                    </Col>
+                  </Row>
+                  <div className="table">
+                    <ResultTable results={this.state.results} loading={this.state.loading}/>
+                  </div>
+                  <Donate></Donate>
+                </div>
+              ) : (
+                <div>
+                  <div className="small-result-btns">
+                    <Button className="table-btn" onClick={this.download} icon="download"> 下载 </Button>
+                    <Button className="table-btn" onClick={this.clearResult} icon="delete"> 清空 </Button>
+                  </div>
+                  <ResultList results={this.state.results} loading={this.state.loading}/>
+                </div>
+              )
+            }
           </Content>
           <Footer className="footer">
             <p>Based on <a href="https://developers.google.com/maps/documentation/geocoding/start?hl=zh-cn" target="_blank"  rel="noopener noreferrer" style={{'font-weight':'bold'}}>Google</a> and <a href="https://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank"  rel="noopener noreferrer" style={{'font-weight':'bold'}} >Baidu</a> Geocoder API</p>
@@ -105,7 +136,6 @@ class App extends Component {
             <p><a style={{'font-weight':'bold'}} href="https://github.com/sjfkai/mapLocation" target="_blank"  rel="noopener noreferrer"><Icon type="github"/> Source Code </a></p>
           </Footer>
         </Layout>
-        <Donate></Donate>
       </div>
     )
   }
