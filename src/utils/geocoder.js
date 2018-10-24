@@ -82,17 +82,21 @@ async function getCodeFromGoogle(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
+  // const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
+  const url = `https://maps.google.cn/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
   let res;
   try {
     res = (await axios.get(url, {timeout: 5000})).data
   } catch (error) {
-    return {
-      location,
-      isError: true,
-      message: `请求Google服务失败，请使用Baidu或使用代理。`,
-      status: '',
+    if (error.message.includes('timeout')) {
+      return {
+        location,
+        isError: true,
+        message: `请求Google服务失败，请使用Baidu或使用代理。`,
+        status: '',
+      }
     }
+    throw error;
   }
   if (res.status !== 'OK') {
     return {
