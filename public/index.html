@@ -22,27 +22,66 @@
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/image/icon/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110880274-2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      var head = document.getElementsByTagName('head')[0];
+      const existReg = new RegExp('^%.+%$');
+      if ("%REACT_APP_HOTJAR_ID%" && !existReg.test("%REACT_APP_HOTJAR_ID%")) {
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:"%REACT_APP_HOTJAR_ID%",hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      }
 
-      gtag('config', 'UA-110880274-2');
+      if ("%REACT_APP_GOOGLE_ANALYTICS_ID%" && !existReg.test("%REACT_APP_GOOGLE_ANALYTICS_ID%")) {
+        var gaScript = document.createElement('script');
+        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GOOGLE_ANALYTICS_ID%"
+        gaScript.async = 1;
+        head.appendChild(gaScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-110880274-2');
+      }
+
+      if ("%REACT_APP_BAIDU_ANALYTICS_ID%"  && !existReg.test("%REACT_APP_BAIDU_ANALYTICS_ID%")) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?%REACT_APP_BAIDU_ANALYTICS_ID%";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+      
+      if ('%REACT_APP_GOOGLE_MAP_KEY%' && !existReg.test("%REACT_APP_GOOGLE_MAP_KEY%")) {
+        var mapScript = document.createElement('script');
+        mapScript.src = "https://maps.googleapis.com/maps/api/js?key=%REACT_APP_GOOGLE_MAP_KEY%"
+        mapScript.async = 1;
+        mapScript.defer = 1;
+        mapScript.type = "text/javascript";
+        head.appendChild(mapScript);
+      }
+
+      if ("%REACT_APP_SENTRY_KEY%"
+        && "%REACT_APP_SENTRY_ID%"
+        && !existReg.test("%REACT_APP_SENTRY_KEY%")
+        && !existReg.test("%REACT_APP_SENTRY_ID%")) {
+        var sentryScript = document.createElement('script');
+        sentryScript.src = "https://cdn.ravenjs.com/3.23.1/raven.min.js"
+        sentryScript.crossorigin = "anonymous";
+        sentryScript.onload= function(){
+          Raven.config('https://%REACT_APP_SENTRY_KEY%@sentry.io/%REACT_APP_SENTRY_ID%').install()
+        }
+        head.appendChild(sentryScript);
+      }
+      
+      window.baiduApiKey="%REACT_APP_BAIDU_API_KEY%"
     </script>
 
-    <!-- Hotjar Tracking Code for maplocation.sjfkai.com -->
-    <script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:750466,hjsv:6};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
     <!-- baidu -->
     <script>
       (function(){
@@ -55,16 +94,10 @@
         bp.src = 'http://push.zhanzhang.baidu.com/push.js';
         }
           var s = document.getElementsByTagName("script")[0];
+          s.async = 1;
           s.parentNode.insertBefore(bp, s);
       })();
     </script>
-    <!-- cnzz -->
-    <div style="display:none">
-      <script src="https://s4.cnzz.com/z_stat.php?id=1255259651&web_id=1255259651" language="JavaScript"></script>
-    </div>
-    <!-- sentry -->
-    <script src="https://cdn.ravenjs.com/3.23.1/raven.min.js" crossorigin="anonymous"></script>
-    <script>Raven.config('https://4b98ac717230461d9a492092de838dcb@sentry.io/298219').install()</script>
   </head>
   <body>
     <div style="display:none">

@@ -24,11 +24,11 @@
 
     yarn
 
-复制 `api key` 配置文件：
+复制 `env` 文件：
 
-    cp src/ak.json.example src/ak.json
+    cp ./env.example src/.env
 
-把 `ak.json` 中的 `key` 改成你自己的
+在 `.env` 中的填写你自己的 `API_KEY`
 
 然后运行：
 
@@ -40,7 +40,30 @@
 
 界面成功显示说明启动成功。
 
-**如果启动成功但是查询失败的话**，请检查自己的`ak`是否正确。确认`ak`是否有`geocoding api`服务的权限。
+## `.env` 文件
+
+本项目通过环境变量配置 `API_KEY` 及第三方工具，如：百度统计。 您只需要把自己的`key`配置到`.env`文件即可生效。
+
+```
+# 必填项
+# google map api key
+REACT_APP_GOOGLE_MAP_KEY=
+# baidu api key
+REACT_APP_BAIDU_API_KEY=
+
+# 选填
+# google analytics
+REACT_APP_GOOGLE_ANALYTICS_ID=
+# hotjar
+REACT_APP_HOTJAR_ID=
+# baidu analytics
+REACT_APP_BAIDU_ANALYTICS_ID=
+# sentry
+REACT_APP_SENTRY_KEY=
+REACT_APP_SENTRY_ID=
+```
+
+**如果启动成功但是查询失败的话**，请检查自己的`API_KEY`是否正确。确认`API_KEY`是否有`geocoding api`服务的权限。
 
 ## LICENSE
 

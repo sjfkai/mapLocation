@@ -1,7 +1,5 @@
-import axios from 'axios'
 import jsonp from 'jsonp'
 import { sleep } from './index'
-import * as ak from '../ak.json';
 import { getGoogleCoords } from '../utils'
 
 function getFromStorage(key) {
@@ -45,7 +43,7 @@ async function getCodeFromBaidu(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
-  const url = `https://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${ak.baidu}`
+  const url = `https://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
 
   const res = await jsonpPromise(url, {
     param: 'callback',
@@ -82,38 +80,33 @@ async function getCodeFromGoogle(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
-  // const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
-  const url = `https://maps.google.cn/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${ak.google}`
-  let res;
-  try {
-    res = (await axios.get(url, {timeout: 5000})).data
-  } catch (error) {
-    if (error.message.includes('timeout')) {
-      return {
-        location,
-        isError: true,
-        message: `请求Google服务失败，请使用Baidu或使用代理。`,
-        status: '',
-      }
-    }
-    throw error;
-  }
-  if (res.status !== 'OK') {
+  const { results, status } = await googleGeoCodePromise(location);
+  if (status === 'ERROR') {
     return {
       location,
       isError: true,
-      message: `${res.status}: ${res.error_message}`,
-      status: res.status,
+      message: `请求Google服务失败，请使用Baidu或使用代理。`,
+      status: '',
+    }
+  }
+  if (status !== 'OK') {
+    return {
+      location,
+      isError: true,
+      message: `${status}`,
+      status: status,
     }
   }
 
   const result = {
     location,
     isError: false,
-    code: res.results[0].geometry.location,
-    precise: res.results[0].geometry.location_type,
-    coords: getGoogleCoords(res.results[0].geometry.location.lng, res.results[0].geometry.location.lat)
-
+    code: {
+      lat: results[0].geometry.location.lat(),
+      lng: results[0].geometry.location.lng(),
+    },
+    precise: results[0].geometry.location_type,
+    coords: getGoogleCoords(results[0].geometry.location.lng, results[0].geometry.location.lat)
   }
   saveToStorage(cacheKey, result)
   return result
@@ -127,5 +120,20 @@ function jsonpPromise(url, opts) {
       }
       return resolve(data)
     })
+  })
+}
+
+let geocoder = null;
+function googleGeoCodePromise(location) {
+  if (!geocoder) {
+    geocoder = new window.google.maps.Geocoder()
+  }
+  return new Promise((resolve) => {
+    geocoder.geocode( { 'address': location}, function(results, status) {
+      resolve({
+        results,
+        status,
+      })
+    });
   })
 }
