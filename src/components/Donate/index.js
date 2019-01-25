@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Row, Col, Button, Popover} from 'antd'
+import {Row, Col, Button, Popover, Icon} from 'antd'
 import './index.css'
 
 
@@ -33,6 +33,7 @@ const content = (
         <p> 打开支付宝[扫一扫] </p>
       </Col>
     </Row>
+    <div className="new-year"><Icon type="gift" /> 新春快乐！感谢您的支持！打开【支付宝-红包】输入口令：“批量转换地址为经纬度”领红包</div>
   </div>
 );
 
