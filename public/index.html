@@ -16,7 +16,7 @@
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+    <meta name="apple-mobile-web-app-title" content="MapLocation">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/image/icon/icon-152x152.png">
 
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/image/icon/icon-144x144.png">
@@ -71,10 +71,10 @@
         && !existReg.test("%REACT_APP_SENTRY_KEY%")
         && !existReg.test("%REACT_APP_SENTRY_ID%")) {
         var sentryScript = document.createElement('script');
-        sentryScript.src = "https://cdn.ravenjs.com/3.23.1/raven.min.js"
+        sentryScript.src = "https://browser.sentry-cdn.com/4.5.3/bundle.min.js"
         sentryScript.crossorigin = "anonymous";
         sentryScript.onload= function(){
-          Raven.config('https://%REACT_APP_SENTRY_KEY%@sentry.io/%REACT_APP_SENTRY_ID%').install()
+          Sentry.init({ dsn: 'https://%REACT_APP_SENTRY_KEY%@sentry.io/%REACT_APP_SENTRY_ID%' });
         }
         head.appendChild(sentryScript);
       }
