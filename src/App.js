@@ -7,7 +7,7 @@ import Donate from './components/Donate'
 import './App.css'
 import {getCode} from './utils/geocoder'
 import {downloadExcel} from './utils/download'
-import { transformCoords } from './utils'
+import { transformCoords, uniqueId } from './utils'
 
 
 const { Header, Content, Footer } = Layout
@@ -61,6 +61,7 @@ class App extends Component {
       coordsValue: 'default',
     })
     getCode(o.platform, o.locations, (code) => {
+      code.key = uniqueId()
       this.setState({
         results: [...this.state.results, code],
       })
@@ -113,6 +114,12 @@ class App extends Component {
     this.setState({
       results: [],
     })
+  }
+
+  handleDelete = (key) => {
+    this.setState((state) => ({
+      results: state.results.filter(code => code.key !== key),
+    }))
   }
 
   download = () => {
@@ -181,7 +188,11 @@ class App extends Component {
                     </Col>
                   </Row>
                   <div className="table">
-                    <ResultTable results={this.state.results} loading={this.state.loading}/>
+                    <ResultTable 
+                      results={this.state.results} 
+                      loading={this.state.loading}
+                      handleDelete={this.handleDelete}
+                    />
                   </div>
                   <Donate></Donate>
                 </div>

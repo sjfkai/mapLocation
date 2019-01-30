@@ -62,3 +62,9 @@ export function transformCoords(fromCoords, toCoords, code) {
     lat: transformedArr[1],
   }
 }
+
+let id = 0
+export function uniqueId() {
+  id += 1
+  return id
+}
