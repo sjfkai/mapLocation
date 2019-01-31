@@ -11,7 +11,19 @@ function getFromStorage(key) {
 }
 
 function saveToStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    // 缓存已满
+    clearStorage()
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+}
+
+function clearStorage(count = 10) {
+  for(let i = 0; i < count; i++) {
+    localStorage.removeItem(localStorage.key(0))
+  }
 }
 
 export async function getCode(platform, locations, onProgress) {
