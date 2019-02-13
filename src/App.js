@@ -60,7 +60,7 @@ class App extends Component {
       })),
       coordsValue: 'default',
     })
-    getCode(o.platform, o.locations, (code) => {
+    getCode(o.platform, o.locations, o.apiKey, (code) => {
       code.key = uniqueId()
       this.setState({
         results: [...this.state.results, code],

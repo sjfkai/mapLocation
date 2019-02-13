@@ -1,4 +1,5 @@
 import jsonp from 'jsonp'
+import axios from 'axios'
 import { sleep } from './index'
 import { getGoogleCoords } from '../utils'
 
@@ -26,7 +27,7 @@ function clearStorage(count = 10) {
   }
 }
 
-export async function getCode(platform, locations, onProgress) {
+export async function getCode(platform, locations, apiKey, onProgress) {
   if(!locations || !locations.length) {
     return []
   }
@@ -35,7 +36,7 @@ export async function getCode(platform, locations, onProgress) {
     const location = locations[i];
     let code
     if(platform ==='google') {
-      code = await getCodeFromGoogle(location)
+      code = await getCodeFromGoogle(location, apiKey)
       if (code.isError && code.status === 'OVER_QUERY_LIMIT') {
         throw new Error('OVER_QUERY_LIMIT')
       }
@@ -84,7 +85,7 @@ async function getCodeFromBaidu(location){
   return result
 }
 
-async function getCodeFromGoogle(location){
+async function getCodeFromGoogle(location, apiKey){
   const cacheKey = `google_${location}`
   const cache = getFromStorage(cacheKey)
   if (cache) {
@@ -92,6 +93,19 @@ async function getCodeFromGoogle(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
+  let result
+  if (apiKey) {
+    result = await getCodeFromGoogleByApiKey(location, apiKey)
+  } else {
+    result = await getCodeFromGoogleByDefault(location)
+  }
+  if (!result.isError) {
+    saveToStorage(cacheKey, result)
+  }
+  return result
+}
+
+async function getCodeFromGoogleByDefault(location) {
   const { results, status } = await googleGeoCodePromise(location);
   if (status === 'ERROR') {
     return {
@@ -120,7 +134,42 @@ async function getCodeFromGoogle(location){
     precise: results[0].geometry.location_type,
     coords: getGoogleCoords(results[0].geometry.location.lng, results[0].geometry.location.lat)
   }
-  saveToStorage(cacheKey, result)
+
+  return result
+}
+
+async function getCodeFromGoogleByApiKey(location, apiKey) {
+  const url = `https://maps.google.cn/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${apiKey}`
+  let res;
+  try {
+    res = (await axios.get(url, {timeout: 5000})).data
+  } catch (error) {
+    if (error.message.includes('timeout')) {
+      return {
+        location,
+        isError: true,
+        message: `请求Google服务失败，请使用Baidu或使用代理。`,
+        status: '',
+      }
+    }
+    throw error;
+  }
+  if (res.status !== 'OK') {
+    return {
+      location,
+      isError: true,
+      message: `${res.status}: ${res.error_message}`,
+      status: res.status,
+    }
+  }
+  const result = {
+    location,
+    isError: false,
+    code: res.results[0].geometry.location,
+    precise: res.results[0].geometry.location_type,
+    coords: getGoogleCoords(res.results[0].geometry.location.lng, res.results[0].geometry.location.lat)
+  }
+
   return result
 }
 

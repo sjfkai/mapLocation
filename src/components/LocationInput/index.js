@@ -17,16 +17,46 @@ class LocationInput extends Component {
     loading: PropTypes.bool.isRequired
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      showCustomApiKey: false,
+      showApiKeyInput: false,
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.onSubmit({
           platform: values.platform,
-          locations: values.locations.split('\n').filter(v => v.trim() !== '')
+          locations: values.locations.split('\n').filter(v => v.trim() !== ''),
+          apiKey: values.platform === 'google' && this.state.showApiKeyInput ? values.apiKey :'',
         })
       }
     })
+  }
+
+  onPlatformChange = (e) => {
+    if (e.target.value === 'google') {
+      this.setState({
+        showCustomApiKey: true,
+      })
+      return 
+    }
+
+    this.setState({
+      showCustomApiKey: false,
+      showApiKeyInput: false,
+    })
+  }
+
+  showApiKeyInput = (e) => {
+    e.preventDefault()
+    this.setState((state, props) => ({
+      showApiKeyInput: !state.showApiKeyInput,
+    }))
   }
 
   render() {
@@ -43,7 +73,7 @@ class LocationInput extends Component {
                 ],
                 validateTrigger: 'onChange'
               })(
-                <TextArea autosize={{minRows: 10, maxRows: 20 }} ></TextArea>
+                <TextArea autosize={{minRows: 15, maxRows: 20 }} ></TextArea>
               )}
             </FormItem>
           </Col>
@@ -53,7 +83,7 @@ class LocationInput extends Component {
               <Col span={24}>
                 <FormItem>
                   {getFieldDecorator('platform', {initialValue: 'baidu'})(
-                    <RadioGroup>
+                    <RadioGroup onChange={this.onPlatformChange}>
                       <div className="radio" >
                         <Radio value="baidu">Baidu</Radio>
                         <Popover title="Baidu地址要求" content={baiduTip}>
@@ -61,15 +91,31 @@ class LocationInput extends Component {
                         </Popover>
                       </div>
                       <div className="radio" >
-                        <Radio value="google">Google</Radio>
+                        <Radio value="google">
+                          Google
+                        </Radio>
                         <Popover title="Google地址要求" content={googleTip}>
                           <Icon type="question-circle"/>
                         </Popover>
+                        { this.state.showCustomApiKey &&
+                          <a onClick={this.showApiKeyInput} className="custom-api-key">自定义API_KEY</a>
+                        }
                       </div>
                     </RadioGroup>
                   )}
                 </FormItem>
               </Col>
+              {
+                this.state.showApiKeyInput && 
+                <Col span={24}>
+                  <FormItem>
+                    {getFieldDecorator('apiKey', {initialValue: ''})(
+                        <Input placeholder="请输入您的 Google API_KEY" />
+                    )}
+                    {/* <a>申请教程</a> */}
+                  </FormItem>
+                </Col>
+              }
               <Col span={24}>
                 <FormItem>
                   <Button type="primary" htmlType="submit" loading={this.props.loading}> 转换 </Button>
