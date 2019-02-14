@@ -75,7 +75,7 @@ class App extends Component {
         notification.error({
           duration: 0,
           message: 'Google 服务每日限额已耗尽',
-          description: 'Google 服务每日免费额度较少，且资费较贵。作者个人无法无限度支撑，会根据捐赠情况适当开放限额。如果本站帮助了您，期待得到您的支持。不胜感激！'
+          description: 'Google 服务每日免费额度较少，且资费较贵。作者个人无法无限度支撑，会根据捐赠情况适当开放限额。您可以使用自己的API_KEY。如果本站帮助了您，期待得到您的支持。不胜感激！'
         })
       } else {
         window.Sentry.captureException(error)

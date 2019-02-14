@@ -5,5 +5,6 @@ db.json
 node_modules/
 .deploy*/
 build/
+pages/
 src/ak.json
 .env
