@@ -209,10 +209,14 @@ class App extends Component {
             }
           </Content>
           <Footer className="footer">
+            <div className="footer-link">
+              <a href="https://github.com/sjfkai/mapLocation/blob/master/docs/FAQ.md" target="_blank"  rel="noopener noreferrer">常见问题</a>
+              <a href="https://github.com/sjfkai/mapLocation/blob/master/docs/CHANGELOG.md" target="_blank"  rel="noopener noreferrer">更新日志</a>
+              <a href="https://github.com/sjfkai/mapLocation" target="_blank"  rel="noopener noreferrer">项目源码</a>
+            </div>
             <p>Based on <a href="https://developers.google.com/maps/documentation/geocoding/start?hl=zh-cn" target="_blank"  rel="noopener noreferrer" className="bold">Google</a> and <a href="https://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank"  rel="noopener noreferrer" className="bold" >Baidu</a> Geocoder API</p>
             <p>Developed by <a href="mailto:sjfkai@163.com" target="_top" className="bold">sjfkai@163.com</a></p>
-            <p>Hosted by <a href="https://pages.coding.me" className="bold">Coding Pages</a></p>
-            <p><a className="bold" href="https://github.com/sjfkai/mapLocation" target="_blank"  rel="noopener noreferrer"><Icon type="github"/> Source Code </a></p>
+            {/* <p>Hosted by <a href="https://pages.coding.me" className="bold">Coding Pages</a></p> */}
           </Footer>
         </Layout>
       </div>
