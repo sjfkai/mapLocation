@@ -112,7 +112,7 @@ class LocationInput extends Component {
                     {getFieldDecorator('apiKey', {initialValue: ''})(
                         <Input placeholder="请输入您的 Google API_KEY" />
                     )}
-                    {/* <a>申请教程</a> */}
+                    <a href="https://github.com/sjfkai/mapLocation/blob/master/docs/FAQ.md#%E5%A6%82%E4%BD%95%E7%94%B3%E8%AF%B7google-api_key" target="_blank"  rel="noopener noreferrer">如何申请？</a>
                   </FormItem>
                 </Col>
               }
