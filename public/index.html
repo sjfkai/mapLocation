@@ -36,16 +36,16 @@
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
       }
 
-      if ("%REACT_APP_GOOGLE_ANALYTICS_ID%" && !existReg.test("%REACT_APP_GOOGLE_ANALYTICS_ID%")) {
-        var gaScript = document.createElement('script');
-        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GOOGLE_ANALYTICS_ID%"
-        gaScript.async = 1;
-        head.appendChild(gaScript);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-110880274-2');
-      }
+      // if ("%REACT_APP_GOOGLE_ANALYTICS_ID%" && !existReg.test("%REACT_APP_GOOGLE_ANALYTICS_ID%")) {
+      //   var gaScript = document.createElement('script');
+      //   gaScript.src = "https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GOOGLE_ANALYTICS_ID%"
+      //   gaScript.async = 1;
+      //   head.appendChild(gaScript);
+      //   window.dataLayer = window.dataLayer || [];
+      //   function gtag(){dataLayer.push(arguments);}
+      //   gtag('js', new Date());
+      //   gtag('config', 'UA-110880274-2');
+      // }
 
       if ("%REACT_APP_BAIDU_ANALYTICS_ID%"  && !existReg.test("%REACT_APP_BAIDU_ANALYTICS_ID%")) {
         var _hmt = _hmt || [];
