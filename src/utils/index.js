@@ -38,7 +38,10 @@ export function getGoogleCoords(lng, lat) {
  * @param {object} code 
  */
 export function transformCoords(fromCoords, toCoords, code) {
-  if (!coordsList.includes(fromCoords) || !coordsList.includes(toCoords)) {
+  if (
+    coordsList.indexOf(fromCoords) === -1
+    || coordsList.indexOf(toCoords) === -1
+  ) {
     throw new Error('Error params')
   }
 
