@@ -1,0 +1,24 @@
+.tucao {
+  position: fixed;
+  box-sizing: border-box;
+  right: 0;
+  top: 100px;
+  writing-mode: tb;
+  width: 40px;
+  line-height: 40px;
+  padding: 10px 0;
+  background: rgb(244, 54, 76);
+  border-radius: 3px 0 0 3px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.tucao:active,
+.tucao:hover {
+  color: #ffffff;
+  background: rgb(247, 3, 32);
+}
+
+.tucao:focus {
+  text-decoration: none;
+}

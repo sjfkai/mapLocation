@@ -4,6 +4,7 @@ import LocationInput from './components/LocationInput'
 import ResultTable from './components/ResultTable'
 import ResultList from './components/ResultList'
 import Donate from './components/Donate'
+import TuCao from './components/TuCao'
 import './App.css'
 import {getCode} from './utils/geocoder'
 import {downloadExcel} from './utils/download'
@@ -195,6 +196,7 @@ class App extends Component {
                       handleDelete={this.handleDelete}
                     />
                   </div>
+                  <TuCao></TuCao>
                   <Donate></Donate>
                 </div>
               ) : (
