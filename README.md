@@ -26,7 +26,7 @@
 
 复制 `env` 文件：
 
-    cp ./env.example src/.env
+    cp .env.example ./.env
 
 在 `.env` 中的填写你自己的 `API_KEY`
 
@@ -61,6 +61,8 @@ REACT_APP_BAIDU_ANALYTICS_ID=
 # sentry
 REACT_APP_SENTRY_KEY=
 REACT_APP_SENTRY_ID=
+# tucao
+REACT_APP_TUCAO_ID=
 ```
 
 **如果启动成功但是查询失败的话**，请检查自己的`API_KEY`是否正确。确认`API_KEY`是否有`geocoding api`服务的权限。
