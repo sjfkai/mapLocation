@@ -97,6 +97,7 @@ class LocationInput extends Component {
                         <Popover title="Google地址要求" content={googleTip}>
                           <Icon type="question-circle"/>
                         </Popover>
+                        <a style={{paddingLeft: '10px'}} href="https://github.com/sjfkai/mapLocation/blob/master/docs/FAQ.md#%E4%B8%BA%E4%BD%95-google-%E5%BC%95%E6%93%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%EF%BC%9F" target="_blank"  rel="noopener noreferrer">无法使用？</a>
                         { this.state.showCustomApiKey &&
                           <a onClick={this.showApiKeyInput} className="custom-api-key">自定义API_KEY</a>
                         }

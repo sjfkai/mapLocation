@@ -16,6 +16,10 @@
 请参考[
 Get API Key](https://developers.google.com/maps/documentation/geocoding/get-api-key)。注意开通`Geocoding API`的权限。温馨提示：使用完后记得停用API，以免`key`泄露产生不必要的消费。
 
+## 为何 google 引擎无法使用？
+
+近期（2019/02/10）发现，google 国内域名无法访问，所以替换成了国际域名，如果无法使用，请尝试自备梯子。
+
 ## 捐赠可以提高我的转换额度吗？
 
 并不会，捐赠被视为对本人的一种支持，并且本人最终也会把大家的捐赠花费在购买google转换次数上。但是目前转换额度是所有人共享的，所以您的捐赠并不会提高您个人的额度。

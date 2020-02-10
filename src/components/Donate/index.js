@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Row, Col, Button, Popover} from 'antd'
+import {Row, Col, Button, Popover, Icon} from 'antd'
 import './index.css'
 
 
@@ -33,6 +33,8 @@ const content = (
         <p> 打开支付宝[扫一扫] </p>
       </Col>
     </Row>
+    <div style={{color: 'red'}}><Icon type="heart" />武汉加油！中国加油！<Icon type="heart" /></div>
+    <div>本人更建议您将打赏金额捐予疫情防疫相关慈善机构，本人也会将疫情期间打赏全额捐出。感谢您的支持！</div>
   </div>
 );
 
