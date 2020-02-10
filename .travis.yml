@@ -8,7 +8,7 @@ cache:
   - node_modules
 before_install:
 - export GIT_REPO=https://$REPO_TOKEN@github.com/sjfkai/mapLocation.git
-- export CODING_REPO=https://sjfkai:$CODING_TOKEN@git.coding.net/sjfkai/mapLocation.git
+- export CODING_REPO=https://$CODING_TOKEN@e.coding.net/sjfkai/mapLocation.git
 install:
 - yarn
 script:

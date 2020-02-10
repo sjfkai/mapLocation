@@ -34,7 +34,7 @@ const content = (
       </Col>
     </Row>
     <div style={{color: 'red'}}><Icon type="heart" />武汉加油！中国加油！<Icon type="heart" /></div>
-    <div>本人更建议您将打赏金额捐予疫情防疫相关慈善机构，本人也会将疫情期间打赏全额捐出。感谢您的支持！</div>
+    <div>感谢您的支持！本人会将疫情期间打赏通过各种渠道捐出。</div>
   </div>
 );
 
