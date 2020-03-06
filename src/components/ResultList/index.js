@@ -24,8 +24,8 @@ class ResultList extends Component {
               description={
                 <div>
                   地址: {item.location} <br />
-                  经度: {item.code.lng} <br />
-                  纬度: {item.code.lat} <br />
+                  经度: {item.code ? item.code.lng : ''} <br />
+                  纬度: {item.code ? item.code.lat : ''} <br />
                   是否精确: {item.precise} <br />
                   可信度: {item.confidence} <br />
                   地址类型: {item.level} <br />

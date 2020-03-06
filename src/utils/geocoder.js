@@ -187,6 +187,11 @@ function jsonpPromise(url, opts) {
 let geocoder = null;
 function googleGeoCodePromise(location) {
   if (!geocoder) {
+    if (!window.google) {
+      return Promise.resolve({
+        status: 'ERROR',
+      })
+    }
     geocoder = new window.google.maps.Geocoder()
   }
   return new Promise((resolve) => {
