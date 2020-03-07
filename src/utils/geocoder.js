@@ -139,7 +139,8 @@ async function getCodeFromGoogleByDefault(location) {
 }
 
 async function getCodeFromGoogleByApiKey(location, apiKey) {
-  const url = `https://maps.google.cn/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${apiKey}`
+  // const url = `https://maps.google.cn/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${apiKey}`
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${apiKey}`
   let res;
   try {
     res = (await axios.get(url, {timeout: 5000})).data
