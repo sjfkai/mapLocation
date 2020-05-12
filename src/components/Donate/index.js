@@ -33,7 +33,7 @@ const content = (
         <p> 打开支付宝[扫一扫] </p>
       </Col>
     </Row>
-    <div style={{color: 'red'}}><Icon type="heart" />武汉加油！中国加油！<Icon type="heart" /></div>
+    <div style={{color: 'red'}}><Icon type="heart" />中国加油！世界加油！<Icon type="heart" /></div>
     <div>感谢您的支持！本人会将疫情期间打赏通过各种渠道捐出。</div>
   </div>
 );
