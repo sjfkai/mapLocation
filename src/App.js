@@ -156,10 +156,16 @@ class App extends Component {
       <div>
         <Layout>
           <Header className="header">
-            <Row  type="flex" align="bottom" >
-              <Col><h1>Map Location</h1></Col>
-              <Col><h3>批量转换地址为经纬度</h3></Col>
-            </Row>
+            <div className="header-logo">
+              <h1>Map Location</h1>
+              <h3>批量转换地址为经纬度</h3>
+            </div>
+
+            <div className="header-link">
+              <a href="https://www.geocoding.tech?from=sjfkai" target="_blank" rel="noopener noreferrer">
+                <Icon type="link" /> 经纬度转地址
+              </a>
+            </div>
           </Header>
           <Content className="content">
             <LocationInput onSubmit={this.handleSubmit} loading={this.state.loading}/>

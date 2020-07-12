@@ -24,17 +24,29 @@
 .header {
   padding-top: 20px;
   height: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
-.header h1 {
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo h1 {
   display: inline;
   color: white;
   margin-right: 20px;
 }
 
-.header h3 {
+.header-logo h3 {
   display: inline;
   color: white;
+}
+
+.header-link {
+  font-size: 15px;
+  color: #FFF;
 }
 
 .footer {
