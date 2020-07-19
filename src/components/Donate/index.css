@@ -4,17 +4,34 @@
   right: 10px;
   z-index: 1000;
 }
-.donate-content {
-  /* height: 200px; */
-  width: 700px;
-  text-align: center;
-}
 
-.donate-content img {
-  width: 80%;
-  height: 80%;
-}
-
-.new-year {
+.button {
+  background-color: transparent;
+  border: dotted 1px red;
+  border-radius: 10px;
   color: red;
+  padding: 5px 10px;
+}
+
+.donate-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrcodes {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  align-items: center;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 30px;
+}
+
+.desc {
+  text-align: center;
 }
