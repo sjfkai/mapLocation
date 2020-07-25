@@ -56,11 +56,13 @@ async function getCodeFromBaidu(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
-  const url = `https://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
+  const url = `https://api.map.baidu.com/geocoding/v3/?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
+  // const url = `https://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
 
   const res = await jsonpPromise(url, {
     param: 'callback',
     prefix: 'showLocation',
+    timeout: 5000,
   })
 
   if (res.status !== 0) {

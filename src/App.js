@@ -79,7 +79,11 @@ class App extends Component {
           description: 'Google 服务每日免费额度较少，且资费较贵。作者个人无法无限度支撑，会根据捐赠情况适当开放限额。您可以使用自己的API_KEY。如果本站帮助了您，期待得到您的支持。不胜感激！'
         })
       } else {
-        message.error(error.message)
+        if (error.message === 'Timeout') {
+          message.error('请求超时！可能是今日配额已用尽，请明天再次尝试')
+        } else {
+          message.error(error.message)
+        }
         if (window.Sentry) {
           window.Sentry.captureException(error)
         }
