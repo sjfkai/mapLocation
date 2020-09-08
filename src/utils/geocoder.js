@@ -3,7 +3,25 @@ import axios from 'axios'
 import { sleep } from './index'
 import { getGoogleCoords } from '../utils'
 
+const urlCacheKey = 'maplocation-geocoding-url'
+function getUrl() {
+  if (!localStorage) {
+    return 'https://api.map.baidu.com/geocoding/v3/'
+  }
+  let url = localStorage.getItem(urlCacheKey)
+  if (!url) {
+    url = Math.random() < 0.5
+      ? 'https://api.map.baidu.com/geocoding/v3/'
+      : 'https://api.map.baidu.com/geocoder/v2/'
+    localStorage.setItem(urlCacheKey, url)
+  }
+  return url
+}
+
 function getFromStorage(key) {
+  if (!localStorage) {
+    return null
+  }
   const cache = localStorage.getItem(key)
   if (!cache) {
     return null
@@ -12,6 +30,9 @@ function getFromStorage(key) {
 }
 
 function saveToStorage(key, value) {
+  if (!localStorage) {
+    return null
+  }
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -56,9 +77,7 @@ async function getCodeFromBaidu(location){
   }
   // 为了不超qps限制，手动增加间隔
   await sleep(500)
-  const url = `https://api.map.baidu.com/geocoding/v3/?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
-  // const url = `https://api.map.baidu.com/geocoder/v2/?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
-
+  const url = `${getUrl()}?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
   const res = await jsonpPromise(url, {
     param: 'callback',
     prefix: 'showLocation',
@@ -147,7 +166,7 @@ async function getCodeFromGoogleByApiKey(location, apiKey) {
   try {
     res = (await axios.get(url, {timeout: 5000})).data
   } catch (error) {
-    if (error.message.includes('timeout')) {
+    if (error.message && error.message.indexOf('timeout') !== -1) {
       return {
         location,
         isError: true,
