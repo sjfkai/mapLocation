@@ -1,7 +1,7 @@
 .donate {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   z-index: 1000;
 }
 
@@ -11,6 +11,45 @@
   border-radius: 10px;
   color: red;
   padding: 5px 10px;
+}
+
+.button2 {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-size: contain;
+  background-image: url('./heart.png');
+  color: #FFF;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.button2:hover {
+  animation-play-state: paused;
+}
+
+.button2-animate {
+  animation-duration: 1.5s;
+  animation-name: animate;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(.65,0,.26,1.01);
+  animation-play-state: running;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1);
+  }
+  
+  50% {
+   transform: scale(1.3);
+  }
+
+  to {
+   transform: scale(1);
+ }
 }
 
 .donate-content {

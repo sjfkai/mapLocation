@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Popover, Icon} from 'antd'
+import {Popover} from 'antd'
 import './index.css'
 
 
@@ -8,7 +8,8 @@ class Donate extends Component {
     return (
       <div className="donate">
         <Popover content={content} title="感谢您的支持！ Thanks for your support!" placement="topRight">
-        <div className="button"><Icon type="red-envelope" /> 打赏 <Icon type="red-envelope" /> </div>
+        {/* <div className="button"><Icon type="red-envelope" /> 打赏 <Icon type="red-envelope" /> </div> */}
+          <div className="button2 button2-animate">赏</div>
         </Popover>
       </div>
     )
