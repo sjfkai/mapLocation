@@ -4,6 +4,13 @@ import './index.css'
 
 
 class Donate extends Component {
+  componentDidMount() {
+    (['/image/code.jpg', '/image/alipay.jpeg']).map(url => {
+      const img = new Image()
+      img.src = url
+      return img
+    })
+  }
   render() {
     return (
       <div className="donate">
