@@ -3,6 +3,10 @@ import axios from 'axios'
 import { sleep } from './index'
 import { getGoogleCoords } from '../utils'
 
+const interval = parseInt(process.env.REACT_APP_INRERVAL, 10) || 0
+
+console.log('interval', interval)
+
 const urlCacheKey = 'maplocation-geocoding-url'
 function getUrl() {
   if (!localStorage) {
@@ -76,7 +80,7 @@ async function getCodeFromBaidu(location){
     return {...cache, coords: cache.coords || 'bd09'}
   }
   // 为了不超qps限制，手动增加间隔
-  await sleep(500)
+  await sleep(interval)
   const url = `${getUrl()}?address=${encodeURIComponent(location)}&output=json&ak=${window.baiduApiKey}`
   const res = await jsonpPromise(url, {
     param: 'callback',
@@ -113,7 +117,7 @@ async function getCodeFromGoogle(location, apiKey){
     return {...cache, coords: cache.coords || getGoogleCoords(cache.code.lng, cache.code.lat)}
   }
   // 为了不超qps限制，手动增加间隔
-  await sleep(500)
+  await sleep(interval)
   let result
   if (apiKey) {
     result = await getCodeFromGoogleByApiKey(location, apiKey)

@@ -18,21 +18,19 @@
 
 之后打开控制台，在源码根目录运行：
 
-    npm install
+    $ npm install -g yarn
 
-或 （如果你用 yarn 的话）
-
-    yarn
+    $ yarn
 
 复制 `env` 文件：
 
-    cp .env.example ./.env
+    $ cp .env.example ./.env
 
 在 `.env` 中的填写你自己的 `API_KEY`
 
 然后运行：
 
-    yarn start
+    $ yarn start
 
 启动成功后访问
 
@@ -45,13 +43,15 @@
 本项目通过环境变量配置 `API_KEY` 及第三方工具，如：百度统计。 您只需要把自己的`key`配置到`.env`文件即可生效。
 
 ```
-# 必填项
+# 必填项（api key 二选一）
 # google map api key
 REACT_APP_GOOGLE_MAP_KEY=
 # baidu api key
 REACT_APP_BAIDU_API_KEY=
 
 # 选填
+# 转换间隔（单位：毫秒，默认0）
+REACT_APP_INRERVAL=
 # google analytics
 REACT_APP_GOOGLE_ANALYTICS_ID=
 # hotjar
@@ -67,6 +67,9 @@ REACT_APP_TUCAO_ID=
 
 **如果启动成功但是查询失败的话**，请检查自己的`API_KEY`是否正确。确认`API_KEY`是否有`geocoding api`服务的权限。
 
+## 调整转换间隔时间
+
+为了防止并发过高，提供了每条转换后间隔一段时间的功能，可以通过修改`.env`文件中的`REACT_APP_INRERVAL`设置。默认间隔时间为`0ms`
 ## LICENSE
 
 MIT
