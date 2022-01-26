@@ -60,17 +60,21 @@
 
 .qrcodes {
   display: flex;
-  justify-content: space-between;
-  width: 500px;
+  justify-content: center;
+  width: 300px;
   align-items: center;
 }
 
 .image {
   width: 200px;
   height: 200px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .desc {
+  text-align: center;
+}
+
+.text {
   text-align: center;
 }
