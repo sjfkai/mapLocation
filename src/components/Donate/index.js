@@ -37,7 +37,7 @@ const content = (
     </div>
     <br />
     <div className="text">本站完全免费，如果本站为你节约了时间</div>
-    <div className="text">可否请您献出一份的爱心。非常感谢！❤️❤️</div>
+    <div className="text">可否请您献出一份的爱心。非常感谢！</div>
   </div>
 );
 
