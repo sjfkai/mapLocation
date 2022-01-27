@@ -37,7 +37,9 @@ const content = (
     </div>
     <br />
     <div className="text">本站完全免费，如果本站为你节约了时间</div>
-    <div className="text">可否请您献出一份的爱心。非常感谢！</div>
+    <div className="text">可否请您
+    <a href="https://support.qq.com/products/65049/blog/547026" target="_blank"  rel="noopener noreferrer">献出一份的爱心</a>
+    。非常感谢！</div>
   </div>
 );
 
