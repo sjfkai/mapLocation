@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.1.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "coordtransform": "^2.1.2",
     "core-js": "^2.5.6",
     "file-saver": "^2.0.0-rc.4",
