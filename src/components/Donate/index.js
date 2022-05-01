@@ -14,7 +14,7 @@ class Donate extends Component {
   render() {
     return (
       <div className="donate">
-        <Popover content={content} title="感谢您的支持！" placement="topRight">
+        <Popover content={content} title="参与公益！献一份爱心！" placement="topRight">
         {/* <div className="button"><Icon type="red-envelope" /> 打赏 <Icon type="red-envelope" /> </div> */}
           <div className="button2 button2-animate"></div>
         </Popover>
@@ -27,7 +27,7 @@ const content = (
   <div className="donate-content">
     <div className="qrcodes">
       <div className="item">
-        <img className="image" src="/image/gongyi.png" alt="wechat QRCode" />
+        <img className="image" src="/image/gongyi2.jpg" alt="wechat QRCode" />
         <p className="desc" > 打开微信[扫一扫] </p>
       </div>
       {/* <div className="item">
