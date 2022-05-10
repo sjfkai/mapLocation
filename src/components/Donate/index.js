@@ -27,7 +27,7 @@ const content = (
   <div className="donate-content">
     <div className="qrcodes">
       <div className="item">
-        <img className="image" src="/image/gongyi2.jpg" alt="wechat QRCode" />
+        <img className="image" src="/image/gongyi3.png" alt="wechat QRCode" />
         <p className="desc" > 打开微信[扫一扫] </p>
       </div>
       {/* <div className="item">
