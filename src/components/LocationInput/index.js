@@ -102,9 +102,15 @@ class LocationInput extends Component {
                           <a onClick={this.showApiKeyInput} className="custom-api-key">自定义API_KEY</a>
                         }
                       </div>
+                      <div className="radio" >
+                        <Radio value="amap" disabled>
+                          <a href="https://www.piliang.tech/geocoding-amap?from=sjfkai" target="_blank"  rel="noopener noreferrer"><Icon type="link" />高德</a>
+                        </Radio>
+                      </div>
                     </RadioGroup>
                   )}
                 </FormItem>
+                
               </Col>
               {
                 this.state.showApiKeyInput && 

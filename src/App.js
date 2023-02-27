@@ -80,7 +80,7 @@ class App extends Component {
         })
       } else {
         if (error.message === 'Timeout') {
-          message.error('请求超时！可能是今日配额已用尽，请明天再次尝试')
+          message.error('请求超时！可能是今日配额已用尽，请选择其他平台或明天再次尝试')
         } else {
           message.error(error.message)
         }
